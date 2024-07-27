@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.posdemo.databinding.ActivityTransaksiBinding
 import com.example.posdemo.databinding.TransaksiItemBinding
 import com.example.posdemo.responses.TransaksiResponses
-import java.text.NumberFormat
-import java.util.Locale
+import com.example.posdemo.services.Common
 
 class TransaksiAdapter(
     private val dataTransaksi: ArrayList<TransaksiResponses>,
@@ -34,9 +33,9 @@ class TransaksiAdapter(
     override fun onBindViewHolder(holder: TransaksiViewHolder, position: Int) {
         val currentItem = dataTransaksi[position]
         binding.kodeTransaksi.text = currentItem.transaksi.transaksi_code
-        holder.binding.totalHarga.text = formatCurrency(currentItem.transaksi.total_harga)
-        holder.binding.kembalian.text = formatCurrency(currentItem.transaksi.kembalian)
-        holder.binding.bayaran.text = formatCurrency(currentItem.transaksi.bayaran)
+        holder.binding.totalHarga.text = Common.formatCurrency(currentItem.transaksi.total_harga)
+        holder.binding.kembalian.text = Common.formatCurrency(currentItem.transaksi.kembalian)
+        holder.binding.bayaran.text = Common.formatCurrency(currentItem.transaksi.bayaran)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -47,8 +46,4 @@ class TransaksiAdapter(
         notifyDataSetChanged()
     }
 
-    private fun formatCurrency(nominal: Int): String {
-
-        return NumberFormat.getCurrencyInstance(Locale("id", "ID")).format(nominal)
-    }
 }

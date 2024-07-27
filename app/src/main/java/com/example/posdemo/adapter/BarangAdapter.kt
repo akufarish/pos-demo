@@ -9,8 +9,7 @@ import com.bumptech.glide.Glide
 import com.example.posdemo.databinding.BarangItemBinding
 import com.example.posdemo.models.Barang
 import com.example.posdemo.retrofit.ApiServices
-import java.text.NumberFormat
-import java.util.Locale
+import com.example.posdemo.services.Common
 
 class BarangAdapter(
     private var dataBarang: ArrayList<Barang>,
@@ -33,7 +32,7 @@ class BarangAdapter(
 
     override fun onBindViewHolder(holder: BarangViewHolder, position: Int) {
         val currentData = dataBarang[position]
-        holder.binding.foodLocation.text = formatCurrency(currentData.harga_produk.toInt())
+        holder.binding.foodLocation.text = Common.formatCurrency(currentData.harga_produk.toInt())
         holder.binding.foodTitle.text = currentData.nama_produk
 
         Glide.with(holder.itemView)
@@ -56,8 +55,4 @@ class BarangAdapter(
         fun onClick(result: Barang)
     }
 
-    private fun formatCurrency(nominal: Int): String {
-
-        return NumberFormat.getCurrencyInstance(Locale("id", "ID")).format(nominal)
-    }
 }

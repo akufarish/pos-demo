@@ -11,8 +11,7 @@ import com.example.posdemo.databinding.KeranjangItemBinding
 import com.example.posdemo.models.Transaksi
 import com.example.posdemo.responses.Keranjang
 import com.example.posdemo.retrofit.ApiServices
-import java.text.NumberFormat
-import java.util.Locale
+import com.example.posdemo.services.Common
 
 class KeranjangAdapter(
     private var dataKeranjang: ArrayList<Keranjang>,
@@ -52,9 +51,9 @@ class KeranjangAdapter(
             )
         }
 //        holder.binding.totalHarga.text = totalHarga.toString()
-        fragmentKeranjangBinding.totalHarga.text = formatCurrency(totalHarga)
+        fragmentKeranjangBinding.totalHarga.text = Common.formatCurrency(totalHarga)
         holder.binding.hargaProduk.text =
-            formatCurrency(currentItem.barang.harga_produk.toInt() * currentItem.pcs.toInt())
+            Common.formatCurrency(currentItem.barang.harga_produk.toInt() * currentItem.pcs.toInt())
         holder.binding.foodPcs.text = "${currentItem.pcs} pcs"
 
         val transaksi = Transaksi(
@@ -66,11 +65,6 @@ class KeranjangAdapter(
         fragmentKeranjangBinding.transaksiButton.setOnClickListener {
             listener.onClick(transaksi)
         }
-    }
-
-    private fun formatCurrency(nominal: Int): String {
-
-        return NumberFormat.getCurrencyInstance(Locale("id", "ID")).format(nominal)
     }
 
     @SuppressLint("NotifyDataSetChanged")
