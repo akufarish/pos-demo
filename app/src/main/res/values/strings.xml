@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">POS-Demo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ambrosia_hotel_restaurant">lorem</string>
+    <string name="total_harga">%1$s</string>
+    <string name="total_harga_label">Total Harga</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="transaksi_sukses">Transaction Successful</string>
+    <string name="transaksi_code">1DI 8U2</string>
+    <string name="back">Back</string>
+    <string name="bayaran_label">Bayaran</string>
+    <string name="kembalianLabel">Kembalian</string>
+    <string name="kode_antrian">1by 97n</string>
+    <string name="total_harga_riwayat_transaksi">Rp.1000.00</string>
+    <string name="waktu_transaksi">13-08-2023</string>
+</resources>

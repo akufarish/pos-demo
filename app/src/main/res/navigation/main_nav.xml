@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/produkFragment">
+
+    <fragment
+        android:id="@+id/produkFragment"
+        android:name="com.example.posdemo.pages.produk.ProdukFragment"
+        android:label="fragment_produk"
+        tools:layout="@layout/fragment_produk" />
+    <fragment
+        android:id="@+id/keranjangFragment"
+        android:name="com.example.posdemo.pages.keranjang.KeranjangFragment"
+        android:label="fragment_keranjang"
+        tools:layout="@layout/fragment_keranjang" />
+    <fragment
+        android:id="@+id/riwayatTransaksiFragment"
+        android:name="com.example.posdemo.pages.transaksi.riwayatTransaksi.RiwayatTransaksiFragment"
+        android:label="fragment_riwayat_transaksi"
+        tools:layout="@layout/fragment_riwayat_transaksi" />
+</navigation>

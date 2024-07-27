@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".pages.keranjang.KeranjangFragment">
+
+    <ScrollView
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.recyclerview.widget.RecyclerView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/keranjangRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/keranjang_item"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="12dp"
+                android:layout_marginBottom="-3dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="190dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:padding="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/totalHargaLabel"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:text="@string/total_harga_label"
+                        android:textSize="18sp"/>
+
+                    <TextView
+                        android:layout_marginStart="20dp"
+                        android:text="@string/total_harga"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:id="@+id/totalHarga"
+                        app:layout_constraintStart_toEndOf="@+id/totalHargaLabel"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/bayaranEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:inputType="numberDecimal"
+                        app:layout_constraintTop_toBottomOf="@+id/totalHarga"
+                        android:autofillHints="" />
+
+                    <Button
+                        android:layout_marginHorizontal="12dp"
+                        android:id="@+id/transaksiButton"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:text="@string/transaksi" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>
