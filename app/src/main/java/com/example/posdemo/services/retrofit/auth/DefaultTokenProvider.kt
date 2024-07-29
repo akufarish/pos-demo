@@ -18,4 +18,8 @@ class DefaultTokenProvider : TokenProvider {
     override fun setToken(token: String) {
         this.token = token
     }
+
+    override fun revokeToken() {
+        this.token = ""
+    }
 }

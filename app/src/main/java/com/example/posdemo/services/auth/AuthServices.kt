@@ -1,12 +1,9 @@
 package com.example.posdemo.services.auth
 
 import android.content.Context
-import android.content.Intent
 import android.util.Log
 import android.view.View
 import com.example.posdemo.databinding.FragmentProdukBinding
-import com.example.posdemo.pages.MainActivity
-import com.example.posdemo.pages.auth.LoginActivity
 import com.example.posdemo.requests.LoginRequest
 import com.example.posdemo.requests.RegisterRequest
 import com.example.posdemo.responses.LoginResponses
@@ -63,6 +60,12 @@ object AuthServices {
         tokenManager.saveToken(data.token)
     }
 
+    private fun revokeToken(context: Context) {
+        ApiServices.revokeToken()
+        val tokenManager = TokenManager(context)
+        tokenManager.clearToken()
+    }
+
     fun getAuth(binding: FragmentProdukBinding) {
         ApiServices.endPoint.getAuthProfile().enqueue(object : Callback<UserRespones>{
             override fun onResponse(p0: Call<UserRespones>, p1: Response<UserRespones>) {
@@ -79,6 +82,21 @@ object AuthServices {
             override fun onFailure(p0: Call<UserRespones>, p1: Throwable) {
                 printLog(p1.toString())
             }
+        })
+    }
+
+    fun doLogOut(context: Context) {
+        ApiServices.endPoint.doLogout().enqueue(object : Callback<LoginResponses> {
+            override fun onResponse(p0: Call<LoginResponses>, p1: Response<LoginResponses>) {
+                if (p1.isSuccessful) {
+                    revokeToken(context)
+                }
+            }
+
+            override fun onFailure(p0: Call<LoginResponses>, p1: Throwable) {
+                printLog(p1.toString())
+            }
+
         })
     }
 }

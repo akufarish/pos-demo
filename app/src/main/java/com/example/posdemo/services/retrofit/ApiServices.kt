@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiServices {
-    const val BASE_URL: String = "https://d81e-125-167-204-188.ngrok-free.app/"
+    const val BASE_URL: String = "https://002e-125-167-204-188.ngrok-free.app/"
 
     private val tokenProvider = DefaultTokenProvider()
 
@@ -39,5 +39,9 @@ object ApiServices {
 
     fun setToken(token: String) {
         tokenProvider.setToken(token)
+    }
+
+    fun revokeToken() {
+        tokenProvider.revokeToken()
     }
 }

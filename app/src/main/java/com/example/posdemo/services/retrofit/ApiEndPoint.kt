@@ -49,4 +49,7 @@ interface ApiEndPoint {
 
     @GET("/api/transaksi/{id}")
     fun getDetailTransaksi(@Path("id") id: Int): Call<RiwayatTransaksiResponses>
+
+    @GET("/api/logout")
+    fun doLogout(): Call<LoginResponses>
 }

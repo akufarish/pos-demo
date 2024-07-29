@@ -50,7 +50,7 @@ class KeranjangAdapter(
                 )
             )
         }
-//        holder.binding.totalHarga.text = totalHarga.toString()
+
         fragmentKeranjangBinding.totalHarga.text = Common.formatCurrency(totalHarga)
         holder.binding.hargaProduk.text =
             Common.formatCurrency(currentItem.barang.harga_produk.toInt() * currentItem.pcs.toInt())
