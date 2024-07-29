@@ -1,9 +1,13 @@
 package com.example.posdemo.services.transaksi
 
+import android.content.Context
+import android.content.Intent
 import android.util.Log
+import com.example.posdemo.adapter.DetailRiwiayatTransaksiAdapter
 import com.example.posdemo.adapter.RiwayatTransaksiAdapter
 import com.example.posdemo.adapter.TransaksiAdapter
 import com.example.posdemo.models.Transaksi
+import com.example.posdemo.pages.transaksi.TransaksiActivity
 import com.example.posdemo.responses.RiwayatTransaksiResponses
 import com.example.posdemo.responses.TransaksiResponses
 import com.example.posdemo.retrofit.ApiServices
@@ -16,13 +20,19 @@ object TransaksiServices {
         Log.d("transaksi_api", msg)
     }
 
-    fun StoreBarang(payload: Transaksi) {
+    fun StoreBarang(payload: Transaksi, context: Context) {
         ApiServices.endPoint.StoreTransaksi(payload).enqueue(object: Callback<TransaksiResponses>{
             override fun onResponse(p0: Call<TransaksiResponses>, p1: Response<TransaksiResponses>) {
                 val result = p1.body()
                 if (p1.isSuccessful) {
                     printLog(p1.body().toString())
                     if (result != null) {
+                        context.startActivity(
+                            Intent(context, TransaksiActivity::class.java)
+                                .putExtra("id", result.transaksi.id.toString())
+                        )
+
+                        printLog(result.transaksi.id.toString())
                     }
 
                 }
@@ -73,7 +83,7 @@ object TransaksiServices {
         })
     }
 
-    fun showTransaksi(id: Int, adapter: RiwayatTransaksiAdapter) {
+    fun showTransaksi(id: Int, adapter: DetailRiwiayatTransaksiAdapter) {
         ApiServices.endPoint.getDetailTransaksi(id).enqueue(object : Callback<RiwayatTransaksiResponses>{
             override fun onResponse(
                 p0: Call<RiwayatTransaksiResponses>,

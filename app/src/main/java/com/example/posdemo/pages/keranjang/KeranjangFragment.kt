@@ -50,11 +50,7 @@ class KeranjangFragment : Fragment() {
                         val transaksiPayload =
                             Transaksi(result.total_harga, result.barang, bayaran = binding.bayaranEditText.text.toString().toInt())
 
-                        TransaksiServices.StoreBarang(transaksiPayload)
-
-                        startActivity(
-                            Intent(requireContext(), TransaksiActivity::class.java)
-                        )
+                        TransaksiServices.StoreBarang(transaksiPayload, requireContext())
                     }
                 })
 

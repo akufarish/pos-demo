@@ -16,7 +16,8 @@ import java.time.format.DateTimeFormatter
 
 class RiwayatTransaksiAdapter(
    private val dataRiwayatTransaksi: ArrayList<RiwayatTransaksiResponses.Transaksi>,
-    private val context: Context
+    private val context: Context,
+    private val listener: OnAdapterListener
 ): RecyclerView.Adapter<RiwayatTransaksiAdapter.MyViewHolder>() {
     class MyViewHolder(val binding: RiwayatTransaksiItemBinding): RecyclerView.ViewHolder(binding.root) {
 
@@ -44,6 +45,10 @@ class RiwayatTransaksiAdapter(
         holder.binding.waktuTransaksi.text = formattedDateTime
         Log.d("waktu", currentItem.created_at)
         holder.binding.totalHarga.text = Common.formatCurrency(currentItem.total_harga)
+
+        holder.itemView.setOnClickListener {
+            listener.onClick(currentItem)
+        }
     }
 
     fun setData(data: List<RiwayatTransaksiResponses.Transaksi>) {
@@ -56,5 +61,9 @@ class RiwayatTransaksiAdapter(
         dataRiwayatTransaksi.clear()
         dataRiwayatTransaksi.add(data)
         notifyDataSetChanged()
+    }
+
+    interface OnAdapterListener {
+        fun onClick(data: RiwayatTransaksiResponses.Transaksi)
     }
 }

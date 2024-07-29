@@ -3,6 +3,7 @@ package com.example.posdemo.adapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -51,6 +52,7 @@ class KeranjangAdapter(
             )
         }
 
+        fragmentKeranjangBinding.totalHarga.visibility = View.VISIBLE
         fragmentKeranjangBinding.totalHarga.text = Common.formatCurrency(totalHarga)
         holder.binding.hargaProduk.text =
             Common.formatCurrency(currentItem.barang.harga_produk.toInt() * currentItem.pcs.toInt())

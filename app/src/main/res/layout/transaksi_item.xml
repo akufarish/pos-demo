@@ -8,11 +8,11 @@
     <TextView
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/totalHargaLabel"
+        android:id="@+id/dateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/gray"
-        android:text="@string/total_harga_label"
+        android:text="@string/date"
         android:textSize="18sp" />
 
     <TextView
@@ -22,6 +22,29 @@
         android:text="10000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/date"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_marginTop="@dimen/spacing_transaksi_item"
+        app:layout_constraintTop_toBottomOf="@+id/dateLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/totalHargaLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/gray"
+        android:text="@string/total_harga_label"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_marginTop="@dimen/spacing_transaksi_item"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="10000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date"
         android:id="@+id/totalHarga"
         android:textSize="15sp"
         android:textStyle="bold"/>
