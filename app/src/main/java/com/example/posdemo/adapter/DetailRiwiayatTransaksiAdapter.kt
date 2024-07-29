@@ -17,7 +17,7 @@ import java.time.format.DateTimeFormatter
 class DetailRiwiayatTransaksiAdapter(
     private val dataRiwayatTransaksi: ArrayList<RiwayatTransaksiResponses.Transaksi>,
     private val context: Context,
-    private val binding: ActivityTransaksiBinding
+    private val binding: ActivityTransaksiBinding,
 ): RecyclerView.Adapter<DetailRiwiayatTransaksiAdapter.ViewHolder>() {
     class ViewHolder(val binding: TransaksiItemBinding): RecyclerView.ViewHolder(binding.root) {
 
@@ -47,7 +47,11 @@ class DetailRiwiayatTransaksiAdapter(
         val formattedDateTime = localDateTime.format(formatter)
 
         holder.binding.date.text = formattedDateTime
+        val adapterr = DetailRiwiayatTransaksiBarangAdapter(currentItem.barang, context)
 
+        holder.binding.barangRecyclerView.apply {
+            adapter = adapterr
+        }
 
     }
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.posdemo.adapter.DetailRiwiayatTransaksiAdapter
 import com.example.posdemo.databinding.ActivityTransaksiBinding
+import com.example.posdemo.databinding.RiwayatTransaksiBarangItemBinding
 import com.example.posdemo.services.transaksi.TransaksiServices
 
 class TransaksiActivity : AppCompatActivity() {

@@ -22,7 +22,8 @@ data class RiwayatTransaksiResponses(
             val transaksi_id: Int,
             val barang_id: Int,
             val keranjang_id: Int,
-            val barang: Barang
+            val barang: Barang,
+            val pcs: Int
         )
     }
 }
