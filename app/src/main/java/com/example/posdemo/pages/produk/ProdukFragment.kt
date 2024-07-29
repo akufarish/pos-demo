@@ -38,7 +38,7 @@ class ProdukFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        AuthServices.getAuth(binding)
+        AuthServices.getAuth(binding, requireContext())
 
         val barangAdapter = BarangAdapter(
             arrayListOf(),

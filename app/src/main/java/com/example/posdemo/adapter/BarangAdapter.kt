@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.posdemo.R
 import com.example.posdemo.databinding.BarangItemBinding
 import com.example.posdemo.models.Barang
 import com.example.posdemo.retrofit.ApiServices
@@ -35,9 +36,13 @@ class BarangAdapter(
         holder.binding.foodLocation.text = Common.formatCurrency(currentData.harga_produk.toInt())
         holder.binding.foodTitle.text = currentData.nama_produk
 
+        if (currentData.image == null) {
+            holder.binding.foodImage.setImageResource(R.drawable.ic_image)
+        } else {
         Glide.with(holder.itemView)
             .load(ApiServices.BASE_URL + currentData.image)
             .into(holder.binding.foodImage)
+        }
 
         holder.itemView.setOnClickListener {
             listener.onClick(currentData)

@@ -1,9 +1,11 @@
 package com.example.posdemo.services.auth
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import android.view.View
 import com.example.posdemo.databinding.FragmentProdukBinding
+import com.example.posdemo.pages.produk.tambahProduk.TambahProdukActivity
 import com.example.posdemo.requests.LoginRequest
 import com.example.posdemo.requests.RegisterRequest
 import com.example.posdemo.responses.LoginResponses
@@ -66,14 +68,19 @@ object AuthServices {
         tokenManager.clearToken()
     }
 
-    fun getAuth(binding: FragmentProdukBinding) {
+    fun getAuth(binding: FragmentProdukBinding, context: Context) {
         ApiServices.endPoint.getAuthProfile().enqueue(object : Callback<UserRespones>{
             override fun onResponse(p0: Call<UserRespones>, p1: Response<UserRespones>) {
                 val result = p1.body()
                 if (p1.isSuccessful) {
                     if (result != null) {
-                        if (result.user.role != "merchant") {
-                            binding.fab.visibility = View.GONE
+                        if (result.user.role == "merchant") {
+                            binding.fab.visibility = View.VISIBLE
+                            binding.fab.setOnClickListener {
+                                context.startActivity(
+                                    Intent(context, TambahProdukActivity::class.java)
+                                )
+                            }
                         }
                     }
                 }

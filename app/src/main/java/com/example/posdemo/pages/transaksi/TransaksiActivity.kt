@@ -16,11 +16,8 @@ class TransaksiActivity : AppCompatActivity() {
 
         val idTransaksi = intent.getStringExtra("id").toString()
 
-//        val transaksiAdapter = TransaksiAdapter(arrayListOf(), applicationContext, binding)
-
         val transaksiAdapter = DetailRiwiayatTransaksiAdapter(arrayListOf(), applicationContext, binding)
 
-//        TransaksiServices.latestTransaksi(transaksiAdapter)
         TransaksiServices.showTransaksi(adapter = transaksiAdapter, id = idTransaksi.toInt())
 
         binding.transaksiRecyclerView.apply {
