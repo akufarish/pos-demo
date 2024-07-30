@@ -8,6 +8,7 @@
     tools:context=".pages.produk.tambahProduk.TambahProdukActivity">
 
     <ImageButton
+        android:clickable="true"
         android:id="@+id/uploadImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"

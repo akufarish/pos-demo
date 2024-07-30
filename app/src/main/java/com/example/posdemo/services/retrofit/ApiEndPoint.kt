@@ -56,15 +56,15 @@ interface ApiEndPoint {
 
     @POST("/api/logout")
     fun doLogout(): Call<LoginResponses>
-//    @Multipart
-//    @POST("/api/barang")
-//    fun createBarang(
-//        @Part("nama_produk") namaProduk: String,
-//        @Part("harga_produk") hargaProduk: Int,
-//        @Part("pcs") pcs: Int,
-//        @Part("image") image: MultipartBody.Part
-//    ): Call<BarangResponses>
-
+    @Multipart
     @POST("/api/barang")
-    fun createBarang(@Body() payload: BarangRequest): Call<BarangResponses>
+    fun createBarang(
+        @Part namaProduk: MultipartBody.Part,
+        @Part hargaProduk: MultipartBody.Part,
+        @Part pcs: MultipartBody.Part,
+        @Part image: MultipartBody.Part
+    ): Call<BarangResponses>
+
+//    @POST("/api/barang")
+//    fun createBarang(@Body() payload: BarangRequest): Call<BarangResponses>
 }
