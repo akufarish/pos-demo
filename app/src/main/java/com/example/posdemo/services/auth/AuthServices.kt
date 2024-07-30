@@ -2,9 +2,14 @@ package com.example.posdemo.services.auth
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.example.posdemo.databinding.FragmentProdukBinding
+import com.example.posdemo.pages.MainActivity
+import com.example.posdemo.pages.auth.login.LoginActivity
 import com.example.posdemo.pages.produk.tambahProduk.TambahProdukActivity
 import com.example.posdemo.requests.LoginRequest
 import com.example.posdemo.requests.RegisterRequest
@@ -26,8 +31,14 @@ object AuthServices {
 
                     if (result != null) {
                         setToken(result, context)
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            context.startActivity(
+                                Intent(context, MainActivity::class.java)
+                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            )
+                        }, 2000)
+                        Toast.makeText(context, "Login sukses", Toast.LENGTH_SHORT).show()
                     }
-
                 }
             }
 
@@ -37,11 +48,14 @@ object AuthServices {
         })
     }
 
-    fun register(payload: RegisterRequest) {
+    fun register(payload: RegisterRequest, context: Context) {
         ApiServices.endPoint.register(payload).enqueue(object: Callback<LoginResponses>{
             override fun onResponse(p0: Call<LoginResponses>, p1: Response<LoginResponses>) {
                 if (p1.isSuccessful) {
                     printLog(p1.body().toString())
+                    context.startActivity(
+                        Intent(context, LoginActivity::class.java)
+                    )
                 }
             }
 
@@ -97,6 +111,11 @@ object AuthServices {
             override fun onResponse(p0: Call<LoginResponses>, p1: Response<LoginResponses>) {
                 if (p1.isSuccessful) {
                     revokeToken(context)
+                    Handler(Looper.getMainLooper()).postDelayed({
+                        context.startActivity(
+                            Intent(context, LoginActivity::class.java)
+                        )
+                    }, 2000)
                 }
             }
 

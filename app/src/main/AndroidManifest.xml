@@ -21,10 +21,10 @@
             android:name=".pages.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".pages.auth.RegisterActivity"
+            android:name=".pages.auth.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".pages.auth.LoginActivity"
+            android:name=".pages.auth.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".pages.transaksi.TransaksiActivity"

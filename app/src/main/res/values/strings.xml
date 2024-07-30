@@ -25,4 +25,7 @@
     <string name="date">Date</string>
     <string name="image_button_content_desc">Upload image</string>
     <string name="tambah_barang">Tambah barang</string>
+    <string name="logout">Logout</string>
+    <string name="settings_label">Settings</string>
+    <string name="pegawai_label">Pegawai</string>
 </resources>

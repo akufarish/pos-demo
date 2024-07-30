@@ -1,11 +1,11 @@
-package com.example.posdemo.pages.auth
+package com.example.posdemo.pages.auth.register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.posdemo.databinding.ActivityRegisterBinding
+import com.example.posdemo.pages.auth.login.LoginActivity
 import com.example.posdemo.requests.RegisterRequest
-import com.example.posdemo.retrofit.ApiServices
 import com.example.posdemo.services.auth.AuthServices
 
 class RegisterActivity : AppCompatActivity() {
@@ -37,7 +37,7 @@ class RegisterActivity : AppCompatActivity() {
                 password = passwordValue
             )
 
-            AuthServices.register(payload)
+            AuthServices.register(payload, applicationContext)
         }
     }
 }

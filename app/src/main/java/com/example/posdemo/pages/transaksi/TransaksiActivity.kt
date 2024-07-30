@@ -2,6 +2,7 @@ package com.example.posdemo.pages.transaksi
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.WindowManager
 import com.example.posdemo.adapter.DetailRiwiayatTransaksiAdapter
 import com.example.posdemo.databinding.ActivityTransaksiBinding
 import com.example.posdemo.databinding.RiwayatTransaksiBarangItemBinding
@@ -14,6 +15,11 @@ class TransaksiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityTransaksiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+        )
 
         val idTransaksi = intent.getStringExtra("id").toString()
 

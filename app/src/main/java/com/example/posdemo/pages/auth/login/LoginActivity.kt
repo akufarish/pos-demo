@@ -1,10 +1,10 @@
-package com.example.posdemo.pages.auth
+package com.example.posdemo.pages.auth.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.posdemo.databinding.ActivityLoginBinding
-import com.example.posdemo.pages.MainActivity
+import com.example.posdemo.pages.auth.register.RegisterActivity
 import com.example.posdemo.requests.LoginRequest
 import com.example.posdemo.services.auth.AuthServices
 
@@ -31,14 +31,7 @@ class LoginActivity : AppCompatActivity() {
             val passwordText = binding.passwordEditText.text.toString()
             val payload = LoginRequest(email = emailText, password = passwordText)
 
-            try {
-                AuthServices.login(payload, applicationContext)
-                startActivity(
-                    Intent(this@LoginActivity, MainActivity::class.java )
-                )
-            } catch (e: Exception) {
-
-            }
+            AuthServices.login(payload, applicationContext)
         }
     }
 }

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".pages.auth.RegisterActivity">
+    android:background="@color/bg"
+    tools:context=".pages.auth.register.RegisterActivity">
 
     <TextView
         android:layout_marginBottom="350dp"
@@ -22,7 +23,8 @@
     <EditText
         android:id="@+id/phoneEditText"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="55dp"
+        android:background="@drawable/custom_input"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="12dp"
         android:importantForAutofill="no"
@@ -33,9 +35,10 @@
         app:layout_constraintTop_toBottomOf="@+id/loginPageTitle" />
 
     <EditText
+        android:background="@drawable/custom_input"
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="55dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="12dp"
         android:importantForAutofill="no"
@@ -46,9 +49,10 @@
         app:layout_constraintTop_toBottomOf="@+id/phoneEditText" />
 
     <EditText
+        android:background="@drawable/custom_input"
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="55dp"
         android:layout_marginHorizontal="32dp"
         android:layout_marginTop="12dp"
         android:importantForAutofill="no"

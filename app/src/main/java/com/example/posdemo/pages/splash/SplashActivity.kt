@@ -7,7 +7,7 @@ import android.os.Handler
 import android.os.Looper
 import com.example.posdemo.databinding.ActivitySplashBinding
 import com.example.posdemo.pages.MainActivity
-import com.example.posdemo.pages.auth.LoginActivity
+import com.example.posdemo.pages.auth.login.LoginActivity
 import com.example.posdemo.retrofit.ApiServices
 import com.example.posdemo.retrofit.auth.TokenManager
 
