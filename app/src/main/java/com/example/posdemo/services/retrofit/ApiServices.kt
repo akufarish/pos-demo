@@ -1,13 +1,14 @@
 package com.example.posdemo.retrofit
 
 import com.example.posdemo.retrofit.auth.DefaultTokenProvider
+import com.example.posdemo.services.Common
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiServices {
-    const val BASE_URL: String = "https://5c5c-125-167-204-188.ngrok-free.app/"
+    const val BASE_URL: String = Common.API_URL
 
     private val tokenProvider = DefaultTokenProvider()
 

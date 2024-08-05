@@ -18,11 +18,13 @@ class KeranjangAdapter(
     private var dataKeranjang: ArrayList<Keranjang>,
     private var context: Context,
     private var fragmentKeranjangBinding: FragmentKeranjangBinding,
-    private val listener: OnAdepterListener
+    private val listener: OnAdepterListener,
 ) : RecyclerView.Adapter<KeranjangAdapter.KeranjangViewHolder>() {
+    var totalHarga = 0
+    private val barangs = arrayListOf<Transaksi.Barangs>()
+
     class KeranjangViewHolder(var binding: KeranjangItemBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-    }
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): KeranjangViewHolder {
         val binding = KeranjangItemBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -41,15 +43,38 @@ class KeranjangAdapter(
             .into(holder.binding.foodImage)
         holder.binding.foodTitle.text = currentItem.barang.nama_produk
 
+        var pcsValue = 1
+        var newHarga: Int
+
+        holder.binding.plusBtn.setOnClickListener {
+            pcsValue++
+            newHarga = currentItem.barang.harga_produk.toInt() * pcsValue
+            holder.binding.pcs.text = pcsValue.toString()
+            currentItem.pcs = pcsValue.toString()
+            holder.binding.hargaProduk.text = Common.formatCurrency(newHarga)
+            updatePcsBarang(currentItem, pcsValue)
+        }
+
+        holder.binding.minBtn.setOnClickListener {
+            if (pcsValue > 1) {
+                pcsValue--
+                newHarga = currentItem.barang.harga_produk.toInt() * pcsValue
+                holder.binding.pcs.text = pcsValue.toString()
+                currentItem.pcs = pcsValue.toString()
+                holder.binding.hargaProduk.text = Common.formatCurrency(newHarga)
+                updatePcsBarang(currentItem, pcsValue)
+            }
+        }
+
+        updatePcsBarang(currentItem, pcsValue)
+
+        currentItem.pcs = pcsValue.toString()
+
         var totalHarga = 0
-        val barangs = arrayListOf<Transaksi.Barangs>()
         for (datas in dataKeranjang) {
+
             totalHarga += datas.barang.harga_produk.toInt() * datas.pcs.toInt()
-            barangs.add(
-                Transaksi.Barangs(
-                    barang_id = datas.barang.id, pcs = datas.pcs.toInt(), keranjang_id = datas.id
-                )
-            )
+            datas.pcs = pcsValue.toString()
         }
 
         fragmentKeranjangBinding.totalHarga.visibility = View.VISIBLE
@@ -67,6 +92,31 @@ class KeranjangAdapter(
         fragmentKeranjangBinding.transaksiButton.setOnClickListener {
             listener.onClick(transaksi)
         }
+    }
+
+    private fun updatePcsBarang(currentItem: Keranjang, pcsValue: Int) {
+        for (data in dataKeranjang) {
+            if (data.barang.id == currentItem.barang.id) {
+            data.pcs = pcsValue.toString()
+            break
+            }
+        }
+
+        updateTotalHarga()
+    }
+
+    private fun updateTotalHarga() {
+        barangs.clear()
+        totalHarga = 0
+        for (datas in dataKeranjang) {
+            totalHarga += datas.barang.harga_produk.toInt() * datas.pcs.toInt()
+            barangs.add(
+                Transaksi.Barangs(
+                    barang_id = datas.barang.id, pcs = datas.pcs.toInt(), keranjang_id = datas.id
+                )
+            )
+        }
+        fragmentKeranjangBinding.totalHarga.text = Common.formatCurrency(totalHarga)
     }
 
     @SuppressLint("NotifyDataSetChanged")

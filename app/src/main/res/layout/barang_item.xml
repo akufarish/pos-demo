@@ -48,7 +48,9 @@
             android:text="@string/ambrosia_hotel_restaurant"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/foodTitle"
-            android:textSize="10sp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
             android:layout_marginTop="6dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

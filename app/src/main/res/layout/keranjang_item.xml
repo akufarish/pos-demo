@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
+    android:layout_height="180dp"
     android:layout_marginEnd="16dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -12,7 +12,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:cardCornerRadius="20dp"
         android:layout_width="match_parent"
-        android:layout_height="126dp"
+        android:layout_height="146dp"
         android:layout_margin="12dp" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -75,6 +75,43 @@
                 app:layout_constraintTop_toBottomOf="@+id/foodPcs"
                 android:textSize="12sp"
                 android:layout_marginTop="6dp" />
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pcs_button"
+                android:text="+"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:id="@+id/plusBtn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plusBtn"
+                android:layout_marginEnd="30dp"
+                android:id="@+id/pcs"
+                android:layout_marginVertical="5dp"/>
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pcs_button"
+                android:text="-"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pcs"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:id="@+id/minBtn" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

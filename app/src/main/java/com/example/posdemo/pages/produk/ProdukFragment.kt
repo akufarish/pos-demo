@@ -1,6 +1,7 @@
 package com.example.posdemo.pages.produk
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,8 +12,10 @@ import com.example.posdemo.adapter.DetailBarangAdapter
 import com.example.posdemo.databinding.BottomSheetBinding
 import com.example.posdemo.databinding.FragmentProdukBinding
 import com.example.posdemo.models.Barang
+import com.example.posdemo.requests.KeranjangRequests
 import com.example.posdemo.services.auth.AuthServices
 import com.example.posdemo.services.barang.BarangServices
+import com.example.posdemo.services.keranjang.KeranjangService
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class ProdukFragment : Fragment() {
@@ -45,7 +48,12 @@ class ProdukFragment : Fragment() {
             requireContext(),
             object : BarangAdapter.OnAdepterListener {
                 override fun onClick(result: Barang) {
-                    openBottomSheet(result.id)
+                    val payload = KeranjangRequests(
+                        pcs = 1,
+                        produk_id = result.id
+                    )
+                    KeranjangService.StoreKeranjang(result.id, payload, requireContext())
+                    Log.d("barang", result.toString())
                 }
             })
 

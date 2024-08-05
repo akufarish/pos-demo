@@ -28,4 +28,12 @@
     <string name="logout">Logout</string>
     <string name="settings_label">Settings</string>
     <string name="pegawai_label">Pegawai</string>
+    <string name="phone_label">Phone</string>
+    <string name="password_label">Password</string>
+    <string name="phone_hint">0812381412</string>
+    <string name="password_hint">*****</string>
+    <string name="don_t_have_an_account_label">Don’t have an account?</string>
+    <string name="email_label">Email</string>
+    <string name="email_hint">email@gmail.com</string>
+    <string name="search_hint">Search</string>
 </resources>

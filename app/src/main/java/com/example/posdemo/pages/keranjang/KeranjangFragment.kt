@@ -50,7 +50,13 @@ class KeranjangFragment : Fragment() {
                         val transaksiPayload =
                             Transaksi(result.total_harga, result.barang, bayaran = binding.bayaranEditText.text.toString().toInt())
 
-                        TransaksiServices.StoreBarang(transaksiPayload, requireContext())
+                            try {
+                                TransaksiServices.StoreBarang(transaksiPayload, requireContext())
+                                binding.bayaranEditText.text = null
+                                binding.totalHarga.text = null
+                            } catch (e: Exception) {
+                                Log.d("error_api", e.toString())
+                            }
                     }
                 })
 
