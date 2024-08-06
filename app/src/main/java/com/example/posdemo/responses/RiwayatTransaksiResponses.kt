@@ -3,8 +3,10 @@ package com.example.posdemo.responses
 import com.example.posdemo.models.Barang
 
 data class RiwayatTransaksiResponses(
-    val transaksi: List<Transaksi>,
-    val data: Transaksi
+    val data: List<Transaksi>,
+    val currentPage: Int,
+    val total: Int,
+    val datas: Transaksi
 ) {
     data class Transaksi(
         val id: Int,

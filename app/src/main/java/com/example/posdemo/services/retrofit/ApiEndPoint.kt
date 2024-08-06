@@ -19,6 +19,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiEndPoint {
     @GET("/api/barang")
@@ -49,7 +50,7 @@ interface ApiEndPoint {
     fun getAuthProfile(): Call<UserRespones>
 
     @GET("/api/transaksi")
-    fun getAllTransaksi(): Call<RiwayatTransaksiResponses>
+   suspend fun getAllTransaksi(@Query("page") page: Int): RiwayatTransaksiResponses
 
     @GET("/api/transaksi/{id}")
     fun getDetailTransaksi(@Path("id") id: Int): Call<RiwayatTransaksiResponses>

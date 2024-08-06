@@ -62,26 +62,26 @@ object TransaksiServices {
         })
     }
 
-    fun getTransaksi(adapter: RiwayatTransaksiAdapter) {
-        ApiServices.endPoint.getAllTransaksi().enqueue(object : Callback<RiwayatTransaksiResponses>{
-            override fun onResponse(
-                p0: Call<RiwayatTransaksiResponses>,
-                p1: Response<RiwayatTransaksiResponses>
-            ) {
-                val result = p1.body()
-                if (p1.isSuccessful) {
-                    if (result != null) {
-                        adapter.setData(result.transaksi)
-                        printLog(result.toString())
-                    }
-                }
-            }
-
-            override fun onFailure(p0: Call<RiwayatTransaksiResponses>, p1: Throwable) {
-                printLog(p1.toString())
-            }
-        })
-    }
+//    fun getTransaksi(adapter: RiwayatTransaksiAdapter) {
+//        ApiServices.endPoint.getAllTransaksi().enqueue(object : Callback<RiwayatTransaksiResponses>{
+//            override fun onResponse(
+//                p0: Call<RiwayatTransaksiResponses>,
+//                p1: Response<RiwayatTransaksiResponses>
+//            ) {
+//                val result = p1.body()
+//                if (p1.isSuccessful) {
+//                    if (result != null) {
+//                        adapter.setData(result.data)
+//                        printLog(result.toString())
+//                    }
+//                }
+//            }
+//
+//            override fun onFailure(p0: Call<RiwayatTransaksiResponses>, p1: Throwable) {
+//                printLog(p1.toString())
+//            }
+//        })
+//    }
 
     fun showTransaksi(id: Int, adapter: DetailRiwiayatTransaksiAdapter) {
         ApiServices.endPoint.getDetailTransaksi(id).enqueue(object : Callback<RiwayatTransaksiResponses>{
@@ -94,7 +94,8 @@ object TransaksiServices {
                     printLog(p1.body().toString())
 
                     if (result != null) {
-                        adapter.setSingleData(result.data)
+                        adapter.setSingleData(result.datas)
+//                        adapter.setSingleData(result.data)
                     }
                 }
             }

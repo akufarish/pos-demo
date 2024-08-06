@@ -7,13 +7,20 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.posdemo.adapter.RiwayatTransaksiAdapter
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.posdemo.databinding.FragmentRiwayatTransaksiBinding
 import com.example.posdemo.pages.transaksi.TransaksiActivity
 import com.example.posdemo.responses.RiwayatTransaksiResponses
+import com.example.posdemo.services.paging.RiwayatTransaksiAdapter
 import com.example.posdemo.services.transaksi.TransaksiServices
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RiwayatTransaksiFragment : Fragment() {
+
+    private val viewModel: RiwayatTransaksiViewModel by viewModels()
 
     private var _binding: FragmentRiwayatTransaksiBinding? = null
     private val binding get() = _binding!!
@@ -36,19 +43,28 @@ class RiwayatTransaksiFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val riwayatTransaksiAdapter = RiwayatTransaksiAdapter(arrayListOf(), requireContext(),
-            object : RiwayatTransaksiAdapter.OnAdapterListener {
-                override fun onClick(data: RiwayatTransaksiResponses.Transaksi) {
-                    Log.d("riwayat_transaksi", data.id.toString())
-                        startActivity(
-                            Intent(requireContext(), TransaksiActivity::class.java)
-                                .putExtra("id", data.id.toString())
-                        )
-                }
+//        val riwayatTransaksiAdapter = RiwayatTransaksiAdapter(arrayListOf(), requireContext(),
+//            object : RiwayatTransaksiAdapter.OnAdapterListener {
+//                override fun onClick(data: RiwayatTransaksiResponses.Transaksi) {
+//                    Log.d("riwayat_transaksi", data.id.toString())
 
-            })
+//                }
+//
+//            })
 
-        TransaksiServices.getTransaksi(adapter = riwayatTransaksiAdapter)
+//        TransaksiServices.getTransaksi(adapter = riwayatTransaksiAdapter)
+        val riwayatTransaksiAdapter = RiwayatTransaksiAdapter(requireContext(), object : RiwayatTransaksiAdapter.OnAdapterListener{
+            override fun onClick(data: RiwayatTransaksiResponses.Transaksi) {
+                startActivity(
+                    Intent(requireContext(), TransaksiActivity::class.java)
+                        .putExtra("id", data.id.toString())
+                )
+            }
+        })
+
+        viewModel.list.observe(viewLifecycleOwner, Observer {
+            riwayatTransaksiAdapter.submitData(lifecycle, it)
+        })
 
         binding.riwayatTransaksiRecyclerView.apply {
             adapter = riwayatTransaksiAdapter

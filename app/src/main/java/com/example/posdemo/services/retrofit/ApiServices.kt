@@ -2,16 +2,25 @@ package com.example.posdemo.retrofit
 
 import com.example.posdemo.retrofit.auth.DefaultTokenProvider
 import com.example.posdemo.services.Common
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
+@InstallIn(SingletonComponent::class)
+@Module
 object ApiServices {
     const val BASE_URL: String = Common.API_URL
 
     private val tokenProvider = DefaultTokenProvider()
 
+    @Singleton
+    @get:Provides
     val endPoint: ApiEndPoint
         get() {
             val loggingInterceptor = HttpLoggingInterceptor().apply {
@@ -23,7 +32,7 @@ object ApiServices {
                 .authenticator(TokenAuthenticator(tokenProvider))
                 .addInterceptor { chain ->
                     val request = chain.request().newBuilder()
-                        .header("Authorization", "Bearer ${tokenProvider.getToken()}")
+                            .header("Authorization", "Bearer ${tokenProvider.getToken()}")
                         .header("Accept", "application/json")
                         .build()
                     chain.proceed(request)

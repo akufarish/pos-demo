@@ -10,6 +10,7 @@ import com.example.posdemo.pages.MainActivity
 import com.example.posdemo.pages.auth.login.LoginActivity
 import com.example.posdemo.retrofit.ApiServices
 import com.example.posdemo.retrofit.auth.TokenManager
+import dagger.hilt.android.AndroidEntryPoint
 
 class SplashActivity : AppCompatActivity() {
     private lateinit var _binding: ActivitySplashBinding
