@@ -6,12 +6,80 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.produk.ProdukFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/barang_item"
-        android:id="@+id/barangRecyclerView" />
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_marginHorizontal="22dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:textColor="@color/white"
+                android:id="@+id/searchInput"
+                android:layout_width="290dp"
+                android:layout_height="58dp"
+                android:background="@color/white"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="34dp"
+                android:inputType="text"
+                android:paddingStart="12dp"
+                android:hint="@string/search_hint"
+                android:textColorHint="@color/auth_label"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="34dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="57dp"
+                android:layout_height="57dp"
+                android:backgroundTint="@color/primary" >
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_search"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:backgroundTint="@color/primary"
+                android:src="@drawable/ic_plus"
+                android:layout_marginEnd="30dp"
+                android:visibility="gone"
+                android:layout_marginBottom="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/fab" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                app:layout_constraintTop_toBottomOf="@id/searchInput"
+                app:spanCount="2"
+                android:id="@+id/barangRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/barang_item"
+                android:layout_marginBottom="30dp"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </FrameLayout>

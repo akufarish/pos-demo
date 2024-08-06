@@ -19,4 +19,6 @@ class BarangViewModel @Inject constructor(private val repository: BarangReposito
             dataBarang.postValue(it)
         })
     }
+
+    fun showBarang(id: Int) = viewModelScope.launch {  }
 }

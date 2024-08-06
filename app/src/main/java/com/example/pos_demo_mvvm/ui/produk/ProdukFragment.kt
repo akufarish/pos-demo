@@ -1,6 +1,7 @@
 package com.example.pos_demo_mvvm.ui.produk
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pos_demo_mvvm.R
-import com.example.pos_demo_mvvm.adapter.BarangAdapter
+import com.example.pos_demo_mvvm.data.model.barang.Barang
+import com.example.pos_demo_mvvm.ui.adapter.BarangAdapter
 import com.example.pos_demo_mvvm.databinding.FragmentProdukBinding
 import com.example.pos_demo_mvvm.utils.MyResponse
 import com.example.pos_demo_mvvm.utils.MyResponse.Status.*
@@ -48,6 +50,11 @@ class ProdukFragment : Fragment() {
     }
 
     private fun setupViews() {
+        barangAdapter.onClickListeners = {barang ->
+            run {
+                Log.d("barang_api", barang.nama_produk)
+            }
+        }
         binding.barangRecyclerView.apply {
             adapter = barangAdapter
             layoutManager = GridLayoutManager(requireContext(), 2)
