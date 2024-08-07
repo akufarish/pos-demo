@@ -10,4 +10,14 @@
         android:name="com.example.pos_demo_mvvm.ui.produk.ProdukFragment"
         android:label="fragment_produk"
         tools:layout="@layout/fragment_produk" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.pos_demo_mvvm.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/keranjangFragment"
+        android:name="com.example.pos_demo_mvvm.ui.keranjang.KeranjangFragment"
+        android:label="fragment_keranjang"
+        tools:layout="@layout/fragment_keranjang" />
 </navigation>

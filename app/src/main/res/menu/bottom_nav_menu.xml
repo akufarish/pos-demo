@@ -13,7 +13,7 @@
         android:title="Riwayat transaksi"
         android:icon="@drawable/ic_riwayat" />
     <item
-        android:id="@+id/userFragment"
+        android:id="@+id/profileFragment"
         android:title="user"
         android:icon="@drawable/ic_user" />
 </menu>

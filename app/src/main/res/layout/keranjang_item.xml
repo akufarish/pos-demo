@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="180dp"
+    android:layout_marginEnd="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/keranjang"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardCornerRadius="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_margin="12dp" >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                app:shapeAppearanceOverlay="@style/roundedTopImage"
+                android:id="@+id/foodImage"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="128dp"
+                android:layout_marginStart="12dp"
+                android:layout_height="103.3dp"
+                android:src="@drawable/barang1" />
+
+            <TextView
+                android:id="@+id/foodTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Nasi Goreng"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="12dp"
+                android:textSize="16sp"
+                android:textColor="@color/black"/>
+
+
+            <TextView
+                android:id="@+id/foodLocation"
+                android:layout_marginStart="12dp"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:text="@string/nama_barang"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toBottomOf="@+id/foodTitle"
+                android:textSize="10sp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:id="@+id/foodPcs"
+                android:layout_marginStart="12dp"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:text="@string/pcs"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toBottomOf="@+id/foodLocation"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp" />
+            <TextView
+                android:id="@+id/hargaProduk"
+                android:layout_marginStart="12dp"
+                android:layout_width="114dp"
+                android:layout_height="wrap_content"
+                android:text="@string/harga"
+                app:layout_constraintStart_toEndOf="@+id/foodImage"
+                app:layout_constraintTop_toBottomOf="@+id/foodPcs"
+                android:textSize="12sp"
+                android:layout_marginTop="6dp" />
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pcs_button"
+                android:text="+"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:id="@+id/plusBtn" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plusBtn"
+                android:layout_marginEnd="30dp"
+                android:id="@+id/pcs"
+                android:layout_marginVertical="5dp"/>
+
+            <Button
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/pcs_button"
+                android:text="-"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pcs"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="12dp"
+                android:id="@+id/minBtn" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

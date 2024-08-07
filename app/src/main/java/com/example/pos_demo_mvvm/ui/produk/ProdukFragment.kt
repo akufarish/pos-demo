@@ -10,11 +10,13 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.pos_demo_mvvm.R
 import com.example.pos_demo_mvvm.data.model.barang.Barang
+import com.example.pos_demo_mvvm.data.model.keranjang.KeranjangRequest
 import com.example.pos_demo_mvvm.ui.adapter.BarangAdapter
 import com.example.pos_demo_mvvm.databinding.FragmentProdukBinding
 import com.example.pos_demo_mvvm.utils.MyResponse
 import com.example.pos_demo_mvvm.utils.MyResponse.Status.*
 import com.example.pos_demo_mvvm.viewmodel.BarangViewModel
+import com.example.pos_demo_mvvm.viewmodel.KeranjangViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,6 +27,8 @@ class ProdukFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: BarangViewModel by viewModels()
+
+    private val keranjangViewModel: KeranjangViewModel by viewModels()
 
     @Inject
     lateinit var barangAdapter: BarangAdapter
@@ -52,7 +56,12 @@ class ProdukFragment : Fragment() {
     private fun setupViews() {
         barangAdapter.onClickListeners = {barang ->
             run {
-                Log.d("barang_api", barang.nama_produk)
+                val payload = KeranjangRequest(
+                    pcs = 1,
+                    produk_id = barang.id
+                )
+                keranjangViewModel.storeKeranjang(barang.id, payload)
+                Log.d("barang_api", payload.toString())
             }
         }
         binding.barangRecyclerView.apply {

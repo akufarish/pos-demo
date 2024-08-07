@@ -2,6 +2,7 @@ package com.example.pos_demo_mvvm.utils
 
 import android.content.Context
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.pos_demo_mvvm.utils.di.Retrofit
 import com.example.pos_demo_mvvm.utils.token.TokenManager
@@ -12,10 +13,15 @@ import java.time.format.DateTimeFormatter
 import java.util.Locale
 
 fun setToken(token: String, context: Context) {
-    val retrofit = Retrofit()
-    retrofit.setToken(token)
+    Log.d("set_token", token)
     val tokenManager = TokenManager(context)
     tokenManager.saveToken(token)
+    tokenManager.getToken()
+}
+
+ fun revokeToken(context: Context) {
+    val tokenManager = TokenManager(context)
+    tokenManager.clearToken()
 }
 
 fun formatCurrency(nominal: Int): String {

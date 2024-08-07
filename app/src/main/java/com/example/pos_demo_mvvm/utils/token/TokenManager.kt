@@ -2,6 +2,7 @@ package com.example.pos_demo_mvvm.utils.token
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 
 class TokenManager(context: Context) {
     private val preferences: SharedPreferences =
@@ -12,6 +13,7 @@ class TokenManager(context: Context) {
     }
 
     fun getToken(): String? {
+        Log.d("auth_token",preferences.getString("auth_token", null).toString() )
         return preferences.getString("auth_token", null)
     }
 

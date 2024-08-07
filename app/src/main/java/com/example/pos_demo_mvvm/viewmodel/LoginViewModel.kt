@@ -2,6 +2,8 @@ package com.example.pos_demo_mvvm.viewmodel
 
 import android.content.Context
 import android.content.Intent
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,6 +12,7 @@ import com.example.pos_demo_mvvm.data.model.auth.login.LoginRequest
 import com.example.pos_demo_mvvm.data.model.auth.login.LoginResponses
 import com.example.pos_demo_mvvm.data.repository.AuthRepository
 import com.example.pos_demo_mvvm.ui.MainActivity
+import com.example.pos_demo_mvvm.ui.auth.login.LoginActivity
 import com.example.pos_demo_mvvm.utils.MyResponse
 import com.example.pos_demo_mvvm.utils.setToken
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,15 +38,17 @@ class LoginViewModel @Inject constructor(private val repository: AuthRepository)
                 if (responses.isSuccessful) {
                     if (body != null) {
                         setToken(body.token, context)
+                        Log.d("auth_token", body.token)
+                        Log.d("response_api", responses.code().toString())
                     }
-                }
-
-                Log.d("response_api", responses.code().toString())
-
-                if (responses.code() == 200) {
-                    context.startActivity(
-                        Intent(context, MainActivity::class.java)
-                    )
+                    if (responses.code() == 200) {
+                        Handler(Looper.getMainLooper()).postDelayed({
+                            context.startActivity(
+                                Intent(context, MainActivity::class.java)
+                                    .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            )
+                        }, 2000)
+                    }
                 }
             }
             catch (e: Exception) {

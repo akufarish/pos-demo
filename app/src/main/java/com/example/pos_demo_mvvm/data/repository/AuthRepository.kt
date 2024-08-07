@@ -15,4 +15,8 @@ class AuthRepository @Inject constructor(private val api: ApiEndPoint) {
     suspend fun doRegister(payload: RegisterRequest): Response<LoginResponses> {
         return api.register(payload)
     }
+
+    suspend fun doLogOut(): Response<LoginResponses> {
+        return api.doLogout()
+    }
 }

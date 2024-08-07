@@ -5,11 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import com.example.pos_demo_mvvm.R
+import android.util.Log
 import com.example.pos_demo_mvvm.databinding.ActivitySplashBinding
 import com.example.pos_demo_mvvm.ui.MainActivity
 import com.example.pos_demo_mvvm.ui.auth.login.LoginActivity
-import com.example.pos_demo_mvvm.utils.di.Retrofit
 import com.example.pos_demo_mvvm.utils.token.TokenManager
 
 class SplashActivity : AppCompatActivity() {
@@ -22,11 +21,11 @@ class SplashActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         val tokenManager = TokenManager(applicationContext)
-        val retrofit = Retrofit()
         val token = tokenManager.getToken()
 
+        Log.d("token_api", token.toString())
+
         if (token != null) {
-            retrofit.setToken(token)
 
             Handler(Looper.getMainLooper()).postDelayed({
                 startActivity(
