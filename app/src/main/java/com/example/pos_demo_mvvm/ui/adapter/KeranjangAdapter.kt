@@ -1,5 +1,6 @@
 package com.example.pos_demo_mvvm.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.pos_demo_mvvm.data.model.barang.Barang
 import com.example.pos_demo_mvvm.data.model.keranjang.Keranjang
 import com.example.pos_demo_mvvm.databinding.FragmentKeranjangBinding
 import com.example.pos_demo_mvvm.databinding.KeranjangItemBinding
@@ -19,13 +19,13 @@ import javax.inject.Inject
 class KeranjangAdapter @Inject constructor(@ActivityContext private val context: Context)
     :RecyclerView.Adapter<KeranjangAdapter.ViewHolder>(){
 
-        private lateinit var  binding: KeranjangItemBinding
         private var totalHarga = 0
         private var keranjangData = emptyList<Keranjang>()
         var fragmentKeranjangBinding: FragmentKeranjangBinding? = null
 
     private val barang = arrayListOf<Keranjang.Barangs>()
-    inner class ViewHolder: RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private var binding: KeranjangItemBinding): RecyclerView.ViewHolder(binding.root) {
+        @SuppressLint("SetTextI18n")
         fun setData(data: Keranjang) {
             binding.foodTitle.text = data.barang.nama_produk
 
@@ -100,11 +100,13 @@ class KeranjangAdapter @Inject constructor(@ActivityContext private val context:
                 )
             )
         }
+
+        fragmentKeranjangBinding?.totalHarga?.text = formatCurrency(totalHarga)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        binding = KeranjangItemBinding.inflate(LayoutInflater.from(context), parent, false)
-        return ViewHolder()
+       val binding = KeranjangItemBinding.inflate(LayoutInflater.from(context), parent, false)
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
