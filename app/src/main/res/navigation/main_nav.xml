@@ -20,4 +20,9 @@
         android:name="com.example.pos_demo_mvvm.ui.keranjang.KeranjangFragment"
         android:label="fragment_keranjang"
         tools:layout="@layout/fragment_keranjang" />
+    <fragment
+        android:id="@+id/riwayatTransaksiFragment"
+        android:name="com.example.pos_demo_mvvm.ui.transaksi.RiwayatTransaksiFragment"
+        android:label="fragment_riwayat_transaksi"
+        tools:layout="@layout/fragment_riwayat_transaksi" />
 </navigation>

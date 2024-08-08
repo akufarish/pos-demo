@@ -6,6 +6,7 @@ import com.example.pos_demo_mvvm.data.model.auth.register.RegisterRequest
 import com.example.pos_demo_mvvm.data.model.barang.BarangResponses
 import com.example.pos_demo_mvvm.data.model.keranjang.KeranjangRequest
 import com.example.pos_demo_mvvm.data.model.keranjang.KeranjangResponses
+import com.example.pos_demo_mvvm.data.model.transaksi.TransaksiResponses
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
@@ -34,4 +35,7 @@ interface ApiEndPoint {
 
     @GET("/api/keranjang")
     suspend fun indexKeranjang(): Response<KeranjangResponses>
+
+    @GET("/api/transaksi")
+    suspend fun indexRiwayatTransaksi(): Response<TransaksiResponses>
 }
