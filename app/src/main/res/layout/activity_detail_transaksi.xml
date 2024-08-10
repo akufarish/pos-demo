@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.transaksi.detailTransaksi.DetailTransaksiActivity">
+
+    <ImageView
+        android:layout_marginBottom="500dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:src="@drawable/ic_check"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/checkIcon"/>
+
+    <TextView
+        android:id="@+id/transaksiSuccess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="@string/transaksi_sukses"
+        app:layout_constraintTop_toBottomOf="@+id/checkIcon"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="18dp"
+        android:textSize="26sp" />
+
+    <TextView
+        android:textAllCaps="true"
+        android:id="@+id/kodeTransaksi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:text="@string/transaksi_code"
+        app:layout_constraintTop_toBottomOf="@+id/transaksiSuccess"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="18dp"
+        android:textSize="28sp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:padding="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/kodeTransaksi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/dateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:text="@string/date"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="10000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/date"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/spacing_transaksi_item"
+            app:layout_constraintTop_toBottomOf="@+id/dateLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/totalHargaLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:text="@string/total_harga_label"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_marginTop="@dimen/spacing_transaksi_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="10000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateLabel"
+            android:id="@+id/totalHarga"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/spacing_transaksi_item"
+            app:layout_constraintTop_toBottomOf="@+id/totalHargaLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/bayaranLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:text="@string/bayaran_label"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_marginTop="@dimen/spacing_transaksi_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="10000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/totalHargaLabel"
+            android:id="@+id/bayaran"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_marginTop="@dimen/spacing_transaksi_item"
+            app:layout_constraintTop_toBottomOf="@+id/bayaranLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            android:id="@+id/kembalianLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray"
+            android:text="@string/kembalianLabel"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_marginTop="@dimen/spacing_transaksi_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="10000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bayaranLabel"
+            android:id="@+id/kembalian"
+            android:textSize="15sp"
+            android:textStyle="bold"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

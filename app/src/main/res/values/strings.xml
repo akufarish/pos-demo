@@ -15,10 +15,15 @@
     <string name="nama_barang">Nasi Goreng</string>
     <string name="pcs">2</string>
     <string name="harga">200000</string>
-    <string name="total_harga_label">20000</string>
+    <string name="total_harga_label">Total Harga</string>
     <string name="total_harga">20000</string>
     <string name="transaksi">Transaksi</string>
     <string name="kode_antrian">1by 97n</string>
     <string name="waktu_transaksi">13-08-2023</string>
     <string name="total_harga_riwayat_transaksi">Rp.1000.00</string>
+    <string name="transaksi_sukses">Transaction Successful</string>
+    <string name="transaksi_code">1DI 8U2</string>
+    <string name="date">Date</string>
+    <string name="bayaran_label">Pembayaran</string>
+    <string name="kembalianLabel">Kembalian</string>
 </resources>

@@ -6,4 +6,5 @@
     <color name="primary">#5B41FF</color>
     <color name="bg">#F3F3F3</color>
     <color name="auth_label">#7E8388</color>
+    <color name="green">#14A44D</color>
 </resources>

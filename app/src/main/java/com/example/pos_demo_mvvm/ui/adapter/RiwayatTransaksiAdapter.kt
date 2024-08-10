@@ -21,11 +21,17 @@ class RiwayatTransaksiAdapter @Inject constructor(
 ): RecyclerView.Adapter<RiwayatTransaksiAdapter.ViewHolder>() {
 
     private var transaksiData = emptyList<TransaksiResponses.Transaksi>()
-    class ViewHolder(private var binding: RiwayatTransaksiItemBinding): RecyclerView.ViewHolder(binding.root) {
+
+    var onClickListener: ((TransaksiResponses.Transaksi) -> Unit)? = null
+   inner class ViewHolder(private var binding: RiwayatTransaksiItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun setData(data: TransaksiResponses.Transaksi) {
             binding.kodeTransaksi.text = data.transaksi_code
             binding.waktuTransaksi.text = dateFormat(data.created_at)
             binding.totalHarga.text = formatCurrency(data.total_harga)
+
+            itemView.setOnClickListener {
+                onClickListener?.invoke(data)
+            }
         }
     }
 
