@@ -8,12 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
-import com.example.pos_demo_mvvm.R
-import com.example.pos_demo_mvvm.data.model.barang.Barang
 import com.example.pos_demo_mvvm.data.model.keranjang.KeranjangRequest
 import com.example.pos_demo_mvvm.ui.adapter.BarangAdapter
 import com.example.pos_demo_mvvm.databinding.FragmentProdukBinding
-import com.example.pos_demo_mvvm.utils.MyResponse
 import com.example.pos_demo_mvvm.utils.MyResponse.Status.*
 import com.example.pos_demo_mvvm.viewmodel.BarangViewModel
 import com.example.pos_demo_mvvm.viewmodel.KeranjangViewModel

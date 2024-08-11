@@ -5,13 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
-import com.example.pos_demo_mvvm.R
 import com.example.pos_demo_mvvm.data.model.transaksi.TransaksiResponses
 import com.example.pos_demo_mvvm.databinding.ActivityDetailTransaksiBinding
+import com.example.pos_demo_mvvm.ui.adapter.BarangTransaksiAdapter
 import com.example.pos_demo_mvvm.utils.dateFormat
 import com.example.pos_demo_mvvm.utils.formatCurrency
 import dagger.hilt.android.AndroidEntryPoint
-import java.io.Serializable
 
 @AndroidEntryPoint
 class DetailTransaksiActivity : AppCompatActivity() {
@@ -54,6 +53,13 @@ class DetailTransaksiActivity : AppCompatActivity() {
         binding?.totalHarga?.text = formatCurrency(totalHarga!!.toInt())
         binding?.bayaran?.text = formatCurrency(bayaran!!.toInt())
         binding?.kembalian?.text = formatCurrency(kembalian!!.toInt())
+
+        val barangAdapter = BarangTransaksiAdapter(applicationContext)
+        barangAdapter.setData(barang!!)
+
+        binding?.barangRecyclerView?.apply {
+            adapter = barangAdapter
+        }
 
     }
 

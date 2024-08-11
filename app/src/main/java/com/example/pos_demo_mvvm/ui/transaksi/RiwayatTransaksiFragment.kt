@@ -10,12 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
-import com.example.pos_demo_mvvm.R
 import com.example.pos_demo_mvvm.databinding.FragmentRiwayatTransaksiBinding
-import com.example.pos_demo_mvvm.ui.MainActivity
 import com.example.pos_demo_mvvm.ui.adapter.RiwayatTransaksiAdapter
 import com.example.pos_demo_mvvm.ui.transaksi.detailTransaksi.DetailTransaksiActivity
-import com.example.pos_demo_mvvm.utils.MyResponse
 import com.example.pos_demo_mvvm.utils.MyResponse.Status.*
 import com.example.pos_demo_mvvm.viewmodel.TransaksiViewModel
 import dagger.hilt.android.AndroidEntryPoint

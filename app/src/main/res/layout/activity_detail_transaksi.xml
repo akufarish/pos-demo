@@ -47,6 +47,7 @@
         android:textSize="28sp" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detailTransaksi"
         android:padding="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/kodeTransaksi"
@@ -144,6 +145,16 @@
             android:textStyle="bold"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/detailTransaksi"
+        android:layout_marginTop="@dimen/spacing_transaksi_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/riwayat_transaksi_barang_item"
+        android:id="@+id/barangRecyclerView"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 
